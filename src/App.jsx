@@ -39,54 +39,56 @@ function App() {
 
   return (
     <div className="container py-5" style={{ maxWidth: '560px' }}>
-      <h1 className="mb-4 text-center">タスクボード</h1>
-      <form className="d-flex gap-2 mb-4" onSubmit={addTask}>
-        <input
-          type="text"
-          className="form-control rounded-3"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="新しいタスクを入力"
-        />
-        <button type="submit" className="btn btn-primary rounded-3">
-          追加
-        </button>
-      </form>
-      {tasks.length === 0 ? (
-        <p className="text-center text-muted">タスクはまだありません</p>
-      ) : (
-        <ul className="list-group">
-          {tasks.map((task) => (
-            <li
-              key={task.id}
-              className={`list-group-item d-flex align-items-center justify-content-between rounded-3 mb-2${task.completed ? ' text-muted' : ''}`}
-            >
-              <div className="form-check">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id={task.id}
-                  checked={task.completed}
-                  onChange={() => toggleTask(task.id)}
-                />
-                <label
-                  className={`form-check-label${task.completed ? ' text-decoration-line-through' : ''}`}
-                  htmlFor={task.id}
-                >
-                  {task.text}
-                </label>
-              </div>
-              <button
-                type="button"
-                className="btn btn-sm btn-outline-danger"
-                onClick={() => deleteTask(task.id)}
+      <div className="card shadow-lg rounded-4 p-4">
+        <h1 className="mb-4 text-center">タスクボード</h1>
+        <form className="d-flex gap-2 mb-4" onSubmit={addTask}>
+          <input
+            type="text"
+            className="form-control rounded-3 flex-grow-1"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="新しいタスクを入力"
+          />
+          <button type="submit" className="btn btn-primary rounded-3 flex-shrink-0 text-nowrap">
+            追加
+          </button>
+        </form>
+        {tasks.length === 0 ? (
+          <p className="text-center text-muted">タスクはまだありません</p>
+        ) : (
+          <ul className="list-group">
+            {tasks.map((task) => (
+              <li
+                key={task.id}
+                className={`list-group-item d-flex align-items-center justify-content-between rounded-3 mb-2${task.completed ? ' text-muted' : ''}`}
               >
-                削除
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+                <div className="form-check">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    id={task.id}
+                    checked={task.completed}
+                    onChange={() => toggleTask(task.id)}
+                  />
+                  <label
+                    className={`form-check-label${task.completed ? ' text-decoration-line-through' : ''}`}
+                    htmlFor={task.id}
+                  >
+                    {task.text}
+                  </label>
+                </div>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-danger flex-shrink-0 text-nowrap"
+                  onClick={() => deleteTask(task.id)}
+                >
+                  削除
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   )
 }
