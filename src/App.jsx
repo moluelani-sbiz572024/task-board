@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 
 const STORAGE_KEY = 'task-board.tasks'
 
@@ -39,34 +38,55 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <h1>タスクボード</h1>
-      <form className="task-form" onSubmit={addTask}>
+    <div className="container py-5" style={{ maxWidth: '560px' }}>
+      <h1 className="mb-4 text-center">タスクボード</h1>
+      <form className="input-group mb-4" onSubmit={addTask}>
         <input
           type="text"
+          className="form-control"
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="新しいタスクを入力"
         />
-        <button type="submit">追加</button>
+        <button type="submit" className="btn btn-primary">
+          追加
+        </button>
       </form>
-      <ul className="task-list">
-        {tasks.map((task) => (
-          <li key={task.id} className={task.completed ? 'task completed' : 'task'}>
-            <label>
-              <input
-                type="checkbox"
-                checked={task.completed}
-                onChange={() => toggleTask(task.id)}
-              />
-              <span>{task.text}</span>
-            </label>
-            <button type="button" onClick={() => deleteTask(task.id)}>
-              削除
-            </button>
-          </li>
-        ))}
-      </ul>
+      {tasks.length === 0 ? (
+        <p className="text-center text-muted">タスクはまだありません</p>
+      ) : (
+        <ul className="list-group">
+          {tasks.map((task) => (
+            <li
+              key={task.id}
+              className={`list-group-item d-flex align-items-center justify-content-between${task.completed ? ' text-muted' : ''}`}
+            >
+              <div className="form-check">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id={task.id}
+                  checked={task.completed}
+                  onChange={() => toggleTask(task.id)}
+                />
+                <label
+                  className={`form-check-label${task.completed ? ' text-decoration-line-through' : ''}`}
+                  htmlFor={task.id}
+                >
+                  {task.text}
+                </label>
+              </div>
+              <button
+                type="button"
+                className="btn btn-sm btn-outline-danger"
+                onClick={() => deleteTask(task.id)}
+              >
+                削除
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }
