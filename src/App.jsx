@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="container py-5" style={{ maxWidth: '700px' }}>
       <div className="card shadow-lg rounded-4 p-4">
-        <h1 className="mb-4 text-center">タスクボード</h1>
+        <h1 className="mb-4 text-center" style={{ fontSize: '0.75rem' }}>タスクボード</h1>
         <form className="d-flex gap-2 mb-4" onSubmit={addTask}>
           <input
             type="text"
