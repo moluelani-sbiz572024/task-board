@@ -60,7 +60,8 @@ function App() {
             {tasks.map((task) => (
               <li
                 key={task.id}
-                className={`list-group-item d-flex align-items-center justify-content-between rounded-3 mb-2${task.completed ? ' text-muted' : ''}`}
+                className={`list-group-item d-flex align-items-center justify-content-between rounded-3${task.completed ? ' text-muted' : ''}`}
+                style={{ marginBottom: '20px' }}
               >
                 <div className="form-check">
                   <input
