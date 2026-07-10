@@ -38,7 +38,7 @@ function App() {
   }
 
   return (
-    <div className="container py-5" style={{ maxWidth: '560px' }}>
+    <div className="container py-5" style={{ maxWidth: '700px' }}>
       <div className="card shadow-lg rounded-4 p-4">
         <h1 className="mb-4 text-center">タスクボード</h1>
         <form className="d-flex gap-2 mb-4" onSubmit={addTask}>
@@ -71,7 +71,7 @@ function App() {
                     onChange={() => toggleTask(task.id)}
                   />
                   <label
-                    className={`form-check-label${task.completed ? ' text-decoration-line-through' : ''}`}
+                    className={`form-check-label text-nowrap${task.completed ? ' text-decoration-line-through' : ''}`}
                     htmlFor={task.id}
                   >
                     {task.text}
