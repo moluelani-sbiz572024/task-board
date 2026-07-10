@@ -40,15 +40,15 @@ function App() {
   return (
     <div className="container py-5" style={{ maxWidth: '560px' }}>
       <h1 className="mb-4 text-center">タスクボード</h1>
-      <form className="input-group mb-4" onSubmit={addTask}>
+      <form className="d-flex gap-2 mb-4" onSubmit={addTask}>
         <input
           type="text"
-          className="form-control"
+          className="form-control rounded-3"
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="新しいタスクを入力"
         />
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary rounded-3">
           追加
         </button>
       </form>
@@ -59,7 +59,7 @@ function App() {
           {tasks.map((task) => (
             <li
               key={task.id}
-              className={`list-group-item d-flex align-items-center justify-content-between${task.completed ? ' text-muted' : ''}`}
+              className={`list-group-item d-flex align-items-center justify-content-between rounded-3 mb-2${task.completed ? ' text-muted' : ''}`}
             >
               <div className="form-check">
                 <input
