@@ -12,6 +12,12 @@
 - `npm run dev`：開発サーバー起動
 - `npm run build`：プロダクションビルド
 
+## デプロイ（GitHub Pages）
+- `main`ブランチへのプッシュをトリガーに、GitHub Actions（`.github/workflows/deploy.yml`）がビルドしてGitHub Pagesへ自動デプロイする
+- 公開URL: https://moluelani-sbiz572024.github.io/task-board/
+- `vite.config.js`の`base`はリポジトリ名に合わせて`/task-board/`に設定済み
+- 初回のみ、GitHubリポジトリの Settings → Pages → Source を「GitHub Actions」に設定する必要がある（手動作業）
+
 ## コード管理（Git運用ルール）
 - コードを変更する度にGitHubにプッシュすること
 - GitHubリポジトリ情報
